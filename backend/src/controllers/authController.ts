@@ -41,10 +41,11 @@ export const register = async (req: Request, res: Response) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = await pool.query(
-    "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING",
+    "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email",
     [name, email, hashedPassword],
   );
 
+  // generate token
   const token = generateToken(newUser.rows[0].id);
 
   res.cookie("token", token, cookieOptions);
