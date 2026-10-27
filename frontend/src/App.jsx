@@ -47,8 +47,14 @@ function App() {
           path="/"
           element={<Home loading={loading} user={user} error={error} />}
         />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" /> : <Login setUser={setUser} />}
+        />
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Register setUser={setUser} />}
+        />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </Router>
