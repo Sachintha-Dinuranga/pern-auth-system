@@ -16,6 +16,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
   // get logged in user from backend
@@ -41,7 +42,10 @@ function App() {
     <Router>
       <Navbar user={user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home loading={loading} user={user} error={error} />}
+        />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
       </Routes>

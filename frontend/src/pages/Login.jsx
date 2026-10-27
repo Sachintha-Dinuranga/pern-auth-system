@@ -25,7 +25,7 @@ export default function Login({ setUser }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-[80vh] flex items-center justify-center">
       <form className="bg-white p-6 rounded shadow-md">
         <h2 className="text-2xl mb-4">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
